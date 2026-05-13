@@ -3,188 +3,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Orion Studio — modern weboldalak és AI automatizálás budapesti vállalkozásoknak.">
+    <meta name="description" content="Orion Studio — modern weboldalak, AI automatizálás és digitális megoldások budapesti vállalkozásoknak. Török Orion webfejlesztő és AI-tanácsadó.">
+    <meta property="og:title" content="Orion Studio — Modern weboldalak & AI automatizálás">
+    <meta property="og:description" content="Prémium digitális megoldások budapesti vállalkozásoknak.">
     <title>Orion Studio — Modern weboldalak és AI automatizálás</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Nav -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <a href="#hero" class="nav-logo">
-                <span class="logo-mark">◆</span>
-                <span class="logo-text">Orion <span class="gold">Studio</span></span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <polygon points="10,2 18,18 2,18" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+                    <circle cx="10" cy="10" r="2.5" fill="#c9a84c"/>
+                </svg>
+                <span>Orion <span class="gold">Studio</span></span>
             </a>
             <ul class="nav-links">
-                <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
-                <li><a href="#referenciak">Referenciák</a></li>
-                <li><a href="#rolam">Rólam</a></li>
-                <li><a href="#kapcsolat" class="nav-cta">Kapcsolat</a></li>
+                <li><a href="#szolgaltatasok" data-hu="Szolgáltatások" data-en="Services">Szolgáltatások</a></li>
+                <li><a href="#referenciak" data-hu="Referenciák" data-en="Work">Referenciák</a></li>
+                <li><a href="#arak" data-hu="Árak" data-en="Pricing">Árak</a></li>
+                <li><a href="#rolam" data-hu="Rólam" data-en="About">Rólam</a></li>
+                <li><a href="#kapcsolat" class="nav-cta" data-hu="Kapcsolat" data-en="Contact">Kapcsolat</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Menü megnyitása">
-                <span></span><span></span><span></span>
-            </button>
+            <div class="nav-right">
+                <button class="lang-toggle" id="langToggle" aria-label="Language switch">
+                    <span class="lang-hu active">HU</span>
+                    <span class="lang-sep">/</span>
+                    <span class="lang-en">EN</span>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menü">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
+    <!-- Hero -->
     <section id="hero" class="hero">
-        <div class="hero-bg"></div>
-        <div class="container hero-content reveal">
-            <p class="hero-eyebrow">Orion Studio · Budapest</p>
-            <h1 class="hero-title">
-                Modern weboldalak és<br>
-                <span class="gold">AI automatizálás</span><br>
-                budapesti vállalkozásoknak
+        <canvas id="starCanvas"></canvas>
+        <div class="hero-glow"></div>
+        <div class="container hero-content">
+            <div class="hero-badge reveal-up">
+                <span class="badge-dot"></span>
+                <span data-hu="Elérhető új projektekre · 2025" data-en="Available for new projects · 2025">Elérhető új projektekre · 2025</span>
+            </div>
+            <h1 class="hero-title reveal-up">
+                <span data-hu="Modern weboldalak" data-en="Modern websites">Modern weboldalak</span><br>
+                <span data-hu="és" data-en="and"></span> <em class="gold-italic" data-hu="AI automatizálás" data-en="AI automation">AI automatizálás</em><br>
+                <span data-hu="vállalkozásoknak" data-en="for businesses">vállalkozásoknak</span>
             </h1>
-            <p class="hero-sub">Prémium digitális megoldások, amelyek időt spórolnak és új ügyfeleket hoznak.</p>
-            <div class="hero-actions">
-                <a href="#kapcsolat" class="btn btn-primary">Ajánlatkérés</a>
-                <a href="#szolgaltatasok" class="btn btn-ghost">Szolgáltatások →</a>
+            <p class="hero-sub reveal-up" data-hu="Prémium digitális megoldások, amelyek időt spórolnak és új ügyfeleket hoznak." data-en="Premium digital solutions that save time and bring new clients.">
+                Prémium digitális megoldások, amelyek időt spórolnak és új ügyfeleket hoznak.
+            </p>
+            <div class="hero-actions reveal-up">
+                <a href="#kapcsolat" class="btn btn-primary">
+                    <span data-hu="Ajánlatkérés" data-en="Get a quote">Ajánlatkérés</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#referenciak" class="btn btn-ghost">
+                    <span data-hu="Referenciák →" data-en="View work →">Referenciák →</span>
+                </a>
+            </div>
+            <div class="hero-stats reveal-up">
+                <div class="hero-stat">
+                    <span class="hero-stat-num">4</span>
+                    <span class="hero-stat-label" data-hu="szolgáltatás" data-en="services">szolgáltatás</span>
+                </div>
+                <div class="hero-stat-div"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">24h</span>
+                    <span class="hero-stat-label" data-hu="válaszidő" data-en="response time">válaszidő</span>
+                </div>
+                <div class="hero-stat-div"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">100%</span>
+                    <span class="hero-stat-label" data-hu="személyes munka" data-en="personal work">személyes munka</span>
+                </div>
             </div>
         </div>
-        <a href="#szolgaltatasok" class="scroll-cue" aria-label="Görgess lejjebb">
-            <span></span>
+        <a href="#szolgaltatasok" class="scroll-hint" aria-label="Görgess lejjebb">
+            <div class="scroll-line"></div>
+            <span data-hu="Görgess" data-en="Scroll">Görgess</span>
         </a>
     </section>
 
+    <!-- Services -->
     <section id="szolgaltatasok" class="section services">
         <div class="container">
-            <div class="section-head reveal">
-                <p class="eyebrow"><span class="gold">01</span> · Szolgáltatások</p>
-                <h2>Amiben segíthetek</h2>
-                <p class="lead">Kettő szakterület, mély tudás. Nincs felesleges költség, nincs sablonmunka.</p>
+            <div class="section-head">
+                <p class="eyebrow reveal-up"><span class="gold">01</span> · <span data-hu="Szolgáltatások" data-en="Services">Szolgáltatások</span></p>
+                <h2 class="reveal-up" data-hu="Amiben segíthetek" data-en="How I can help">Amiben segíthetek</h2>
+                <p class="lead reveal-up" data-hu="Négy szakterület, mély tudás. Nincs felesleges költség, nincs sablonmunka." data-en="Four areas of expertise, deep knowledge. No hidden costs, no template work.">Négy szakterület, mély tudás. Nincs felesleges költség, nincs sablonmunka.</p>
             </div>
             <div class="service-grid">
-                <article class="service-card reveal">
-                    <div class="service-num">01</div>
-                    <h3>Weboldal készítés</h3>
-                    <p>Egyedi tervezésű, villámgyors és reszponzív weboldalak, amelyek tükrözik a márkád értékét — és ügyfeleket hoznak.</p>
+                <article class="service-card reveal-up">
+                    <div class="service-num gold">01</div>
+                    <h3 data-hu="Weboldal készítés" data-en="Web Development">Weboldal készítés</h3>
+                    <p data-hu="Egyedi tervezésű, villámgyors és reszponzív weboldalak, amelyek tükrözik a márkád értékét — és ügyfeleket hoznak." data-en="Custom-designed, lightning-fast and responsive websites that reflect your brand value — and bring clients.">Egyedi tervezésű, villámgyors és reszponzív weboldalak, amelyek tükrözik a márkád értékét — és ügyfeleket hoznak.</p>
                     <ul class="service-list">
-                        <li>Egyedi UI/UX tervezés</li>
-                        <li>Modern technológiai stack</li>
-                        <li>SEO-optimalizált felépítés</li>
-                        <li>Teljesen mobilbarát</li>
+                        <li data-hu="Egyedi UI/UX tervezés" data-en="Custom UI/UX design">Egyedi UI/UX tervezés</li>
+                        <li data-hu="Modern technológiai stack" data-en="Modern tech stack">Modern technológiai stack</li>
+                        <li data-hu="SEO-optimalizált felépítés" data-en="SEO-optimised structure">SEO-optimalizált felépítés</li>
+                        <li data-hu="Teljesen mobilbarát" data-en="Fully mobile-friendly">Teljesen mobilbarát</li>
+                        <li data-hu="Gyors átadás — 5–10 nap" data-en="Fast delivery — 5–10 days">Gyors átadás — 5–10 nap</li>
                     </ul>
+                    <a href="#kapcsolat" class="service-link" data-hu="Ajánlatkérés →" data-en="Get a quote →">Ajánlatkérés →</a>
                 </article>
-                <article class="service-card reveal">
-                    <div class="service-num">02</div>
-                    <h3>AI Automatizálás</h3>
-                    <p>Manuális folyamatok kiváltása AI-alapú workflow-kkal. Ügyfélszolgálat, lead-kezelés, riportok — automatikusan.</p>
+                <article class="service-card reveal-up">
+                    <div class="service-num gold">02</div>
+                    <h3 data-hu="AI Automatizálás" data-en="AI Automation">AI Automatizálás</h3>
+                    <p data-hu="Manuális folyamatok kiváltása AI-alapú workflow-kkal. Ügyfélszolgálat, emailek, riportok — automatikusan, éjjel-nappal." data-en="Replace manual processes with AI-powered workflows. Customer service, emails, reports — automatically, 24/7.">Manuális folyamatok kiváltása AI-alapú workflow-kkal. Ügyfélszolgálat, emailek, riportok — automatikusan, éjjel-nappal.</p>
                     <ul class="service-list">
-                        <li>Email automatizálás Claude AI-val</li>
-                        <li>Workflow automatizáció (Make, n8n)</li>
-                        <li>CRM és email integrációk</li>
-                        <li>AI asszisztensek weboldalra</li>
+                        <li data-hu="Email automatizálás Claude AI-val" data-en="Email automation with Claude AI">Email automatizálás Claude AI-val</li>
+                        <li data-hu="Workflow automatizáció (Make, n8n)" data-en="Workflow automation (Make, n8n)">Workflow automatizáció (Make, n8n)</li>
+                        <li data-hu="CRM és email integrációk" data-en="CRM and email integrations">CRM és email integrációk</li>
+                        <li data-hu="AI asszisztensek weboldalra" data-en="AI assistants for websites">AI asszisztensek weboldalra</li>
+                        <li data-hu="Havi karbantartás és support" data-en="Monthly maintenance and support">Havi karbantartás és support</li>
                     </ul>
+                    <a href="#kapcsolat" class="service-link" data-hu="Ajánlatkérés →" data-en="Get a quote →">Ajánlatkérés →</a>
+                </article>
+                <article class="service-card reveal-up">
+                    <div class="service-num gold">03</div>
+                    <h3 data-hu="Logo & Arculat" data-en="Logo & Branding">Logo & Arculat</h3>
+                    <p data-hu="Professzionális logó és vizuális arculat, amely megkülönböztet a versenytársaktól és bizalmat épít az ügyfelekben." data-en="Professional logo and visual identity that sets you apart from competitors and builds trust with clients.">Professzionális logó és vizuális arculat, amely megkülönböztet a versenytársaktól és bizalmat épít az ügyfelekben.</p>
+                    <ul class="service-list">
+                        <li data-hu="Egyedi logótervezés" data-en="Custom logo design">Egyedi logótervezés</li>
+                        <li data-hu="Színpaletta és tipográfia" data-en="Color palette and typography">Színpaletta és tipográfia</li>
+                        <li data-hu="Névjegykártya dizájn" data-en="Business card design">Névjegykártya dizájn</li>
+                        <li data-hu="Közösségi média arculat" data-en="Social media branding">Közösségi média arculat</li>
+                        <li data-hu="Összes fájl átadva (SVG, PNG, PDF)" data-en="All files delivered (SVG, PNG, PDF)">Összes fájl átadva (SVG, PNG, PDF)</li>
+                    </ul>
+                    <a href="#kapcsolat" class="service-link" data-hu="Ajánlatkérés →" data-en="Get a quote →">Ajánlatkérés →</a>
+                </article>
+                <article class="service-card reveal-up">
+                    <div class="service-num gold">04</div>
+                    <h3 data-hu="Google Business & SEO" data-en="Google Business & SEO">Google Business & SEO</h3>
+                    <p data-hu="Megjelenés a Google keresőben és térképen — hogy az ügyfelek megtaláljanak, még mielőtt a versenytársadat megnéznék." data-en="Visibility on Google search and maps — so clients find you before they even look at your competitors.">Megjelenés a Google keresőben és térképen — hogy az ügyfelek megtaláljanak, még mielőtt a versenytársadat megnéznék.</p>
+                    <ul class="service-list">
+                        <li data-hu="Google Business profil beállítás" data-en="Google Business profile setup">Google Business profil beállítás</li>
+                        <li data-hu="Fotók és leírás optimalizálása" data-en="Photo and description optimisation">Fotók és leírás optimalizálása</li>
+                        <li data-hu="Alap SEO beállítások" data-en="Basic SEO configuration">Alap SEO beállítások</li>
+                        <li data-hu="Google Maps megjelenés" data-en="Google Maps visibility">Google Maps megjelenés</li>
+                        <li data-hu="Verifikáció és aktiválás" data-en="Verification and activation">Verifikáció és aktiválás</li>
+                    </ul>
+                    <a href="#kapcsolat" class="service-link" data-hu="Ajánlatkérés →" data-en="Get a quote →">Ajánlatkérés →</a>
                 </article>
             </div>
         </div>
     </section>
 
+    <!-- References -->
     <section id="referenciak" class="section references">
         <div class="container">
-            <div class="section-head reveal">
-                <p class="eyebrow"><span class="gold">02</span> · Referenciák</p>
-                <h2>Korábbi munkák</h2>
-                <p class="lead">Prémium ingatlanfejlesztői weboldalak — egyedi tervezés, modern technológia.</p>
+            <div class="section-head">
+                <p class="eyebrow reveal-up"><span class="gold">02</span> · <span data-hu="Referenciák" data-en="Work">Referenciák</span></p>
+                <h2 class="reveal-up" data-hu="Korábbi munkák" data-en="Selected work">Korábbi munkák</h2>
+                <p class="lead reveal-up" data-hu="Prémium ingatlanfejlesztői weboldalak — egyedi tervezés, modern technológia." data-en="Premium real estate developer websites — custom design, modern technology.">Prémium ingatlanfejlesztői weboldalak — egyedi tervezés, modern technológia.</p>
             </div>
             <div class="ref-grid">
-                <a href="https://helloparks-web.vercel.app" target="_blank" rel="noopener" class="ref-card reveal">
-                    <div class="ref-tag">Ipari ingatlanfejlesztés</div>
+                <a href="https://helloparks-web.vercel.app" target="_blank" rel="noopener" class="ref-card reveal-up">
+                    <div class="ref-top">
+                        <span class="ref-tag" data-hu="Ipari ingatlanfejlesztés" data-en="Industrial real estate">Ipari ingatlanfejlesztés</span>
+                        <svg class="ref-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M15 5H7M15 5v8" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
                     <h3>HelloParks</h3>
-                    <p>Újgenerációs ipari park digitális megjelenése — animációk, interaktív térkép, ajánlatkérő rendszer.</p>
-                    <div class="ref-link">Projekt megtekintése →</div>
+                    <p data-hu="Újgenerációs ipari park teljes digitális megjelenése — animációk, interaktív térkép, ajánlatkérő rendszer." data-en="Next-generation industrial park full digital presence — animations, interactive map, quote request system.">Újgenerációs ipari park teljes digitális megjelenése — animációk, interaktív térkép, ajánlatkérő rendszer.</p>
+                    <div class="ref-tech-row">
+                        <span class="ref-tech">HTML/CSS/JS</span>
+                        <span class="ref-tech" data-hu="Animációk" data-en="Animations">Animációk</span>
+                        <span class="ref-tech" data-hu="Reszponzív" data-en="Responsive">Reszponzív</span>
+                    </div>
+                    <div class="ref-line"></div>
                 </a>
-                <a href="https://faedra-project.vercel.app" target="_blank" rel="noopener" class="ref-card reveal">
-                    <div class="ref-tag">Prémium ingatlan</div>
+                <a href="https://faedra-project.vercel.app" target="_blank" rel="noopener" class="ref-card reveal-up">
+                    <div class="ref-top">
+                        <span class="ref-tag" data-hu="Prémium ingatlan" data-en="Premium real estate">Prémium ingatlan</span>
+                        <svg class="ref-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M15 5H7M15 5v8" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
                     <h3>Faedra Group</h3>
-                    <p>Intézményi befektetői weboldal — prémium dizájn, angol–magyar, háromirányú irodai jelenlét.</p>
-                    <div class="ref-link">Projekt megtekintése →</div>
+                    <p data-hu="Intézményi befektetői weboldal — prémium dizájn, háromirányú irodai jelenlét, befektetői dokumentumrendszer." data-en="Institutional investor website — premium design, three-office presence, investor document system.">Intézményi befektetői weboldal — prémium dizájn, háromirányú irodai jelenlét, befektetői dokumentumrendszer.</p>
+                    <div class="ref-tech-row">
+                        <span class="ref-tech" data-hu="Prémium dizájn" data-en="Premium design">Prémium dizájn</span>
+                        <span class="ref-tech" data-hu="Angol/Magyar" data-en="EN/HU">Angol/Magyar</span>
+                        <span class="ref-tech" data-hu="Befektetői IR" data-en="Investor IR">Befektetői IR</span>
+                    </div>
+                    <div class="ref-line"></div>
                 </a>
             </div>
         </div>
     </section>
 
+    <!-- Pricing -->
+    <section id="arak" class="section pricing">
+        <div class="container">
+            <div class="section-head">
+                <p class="eyebrow reveal-up"><span class="gold">03</span> · <span data-hu="Árak" data-en="Pricing">Árak</span></p>
+                <h2 class="reveal-up" data-hu="Átlátható árazás" data-en="Transparent pricing">Átlátható árazás</h2>
+                <p class="lead reveal-up" data-hu="Nincs rejtett díj. Tudod mit kapsz, mielőtt fizetsz." data-en="No hidden fees. You know what you get before you pay.">Nincs rejtett díj. Tudod mit kapsz, mielőtt fizetsz.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal-up">
+                    <div class="pricing-name" data-hu="Alap csomag" data-en="Starter">Alap csomag</div>
+                    <div class="pricing-amount">
+                        <span class="pricing-from" data-hu="-tól" data-en="from">-tól</span>
+                        <span class="pricing-price gold">180 000 Ft</span>
+                    </div>
+                    <p data-hu="Weboldal + Google Business — az alapok, amivel elindulsz online." data-en="Website + Google Business — the essentials to get you online.">Weboldal + Google Business — az alapok, amivel elindulsz online.</p>
+                    <ul class="pricing-list">
+                        <li data-hu="Egyedi weboldal" data-en="Custom website">Egyedi weboldal</li>
+                        <li data-hu="Google Business profil" data-en="Google Business profile">Google Business profil</li>
+                        <li data-hu="SEO alapbeállítások" data-en="Basic SEO setup">SEO alapbeállítások</li>
+                        <li data-hu="Mobilbarát megjelenés" data-en="Mobile-friendly design">Mobilbarát megjelenés</li>
+                        <li data-hu="1 hónap ingyenes support" data-en="1 month free support">1 hónap ingyenes support</li>
+                    </ul>
+                    <a href="#kapcsolat" class="btn btn-ghost btn-block" data-hu="Ajánlatkérés" data-en="Get a quote">Ajánlatkérés</a>
+                </div>
+                <div class="pricing-card pricing-featured reveal-up">
+                    <div class="pricing-badge" data-hu="Legnépszerűbb" data-en="Most popular">Legnépszerűbb</div>
+                    <div class="pricing-name" data-hu="Prémium csomag" data-en="Premium">Prémium csomag</div>
+                    <div class="pricing-amount">
+                        <span class="pricing-from" data-hu="-tól" data-en="from">-tól</span>
+                        <span class="pricing-price gold">320 000 Ft</span>
+                    </div>
+                    <p data-hu="Weboldal + AI automatizálás + Google Business — teljes digitális jelenlét." data-en="Website + AI automation + Google Business — complete digital presence.">Weboldal + AI automatizálás + Google Business — teljes digitális jelenlét.</p>
+                    <ul class="pricing-list">
+                        <li data-hu="Minden az Alap csomagból" data-en="Everything in Starter">Minden az Alap csomagból</li>
+                        <li data-hu="AI email automatizálás" data-en="AI email automation">AI email automatizálás</li>
+                        <li data-hu="Claude AI integráció" data-en="Claude AI integration">Claude AI integráció</li>
+                        <li data-hu="Make/n8n workflow" data-en="Make/n8n workflow">Make/n8n workflow</li>
+                        <li data-hu="3 hónap ingyenes support" data-en="3 months free support">3 hónap ingyenes support</li>
+                    </ul>
+                    <a href="#kapcsolat" class="btn btn-primary btn-block">
+                        <span data-hu="Ajánlatkérés" data-en="Get a quote">Ajánlatkérés</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+                <div class="pricing-card reveal-up">
+                    <div class="pricing-name" data-hu="AI Retainer" data-en="AI Retainer">AI Retainer</div>
+                    <div class="pricing-amount">
+                        <span class="pricing-from" data-hu="-tól" data-en="from">-tól</span>
+                        <span class="pricing-price gold">60 000 Ft<span style="font-size:1rem">/hó</span></span>
+                    </div>
+                    <p data-hu="Folyamatos AI automatizálás és karbantartás — havi díjért, kötelezettség nélkül." data-en="Ongoing AI automation and maintenance — monthly fee, no commitment.">Folyamatos AI automatizálás és karbantartás — havi díjért, kötelezettség nélkül.</p>
+                    <ul class="pricing-list">
+                        <li data-hu="Email automatizálás" data-en="Email automation">Email automatizálás</li>
+                        <li data-hu="Havi workflow karbantartás" data-en="Monthly workflow maintenance">Havi workflow karbantartás</li>
+                        <li data-hu="Új automatizálások igény szerint" data-en="New automations on request">Új automatizálások igény szerint</li>
+                        <li data-hu="Havi riport és elemzés" data-en="Monthly report and analysis">Havi riport és elemzés</li>
+                        <li data-hu="Felmondható bármikor" data-en="Cancel anytime">Felmondható bármikor</li>
+                    </ul>
+                    <a href="#kapcsolat" class="btn btn-ghost btn-block" data-hu="Ajánlatkérés" data-en="Get a quote">Ajánlatkérés</a>
+                </div>
+            </div>
+            <p class="pricing-note reveal-up" data-hu="Minden projekt egyedi — az ár a konkrét igényektől függ. Ingyenes konzultáció alapján pontos ajánlatot adok." data-en="Every project is unique — pricing depends on your specific needs. I provide an exact quote after a free consultation.">Minden projekt egyedi — az ár a konkrét igényektől függ. Ingyenes konzultáció alapján pontos ajánlatot adok.</p>
+        </div>
+    </section>
+
+    <!-- About -->
     <section id="rolam" class="section about">
         <div class="container about-grid">
-            <div class="about-text reveal">
-                <p class="eyebrow"><span class="gold">03</span> · Rólam</p>
-                <h2>Török Orion</h2>
-                <p class="lead">Budapesti webfejlesztő és AI-tanácsadó. Az Orion Studio mögött egy elv áll: minden ügyfél kapjon olyan munkát, mintha a saját cégemnek készülne.</p>
-                <p>Weboldalakat építek és folyamatokat automatizálok magyar vállalkozásoknak. Hiszek a tisztaságban — a designban, a kódban és a kommunikációban egyaránt. Gyors szállítás, személyes kapcsolat, kiszámítható eredmény.</p>
-                <div class="about-stats">
-                    <div class="stat">
-                        <div class="stat-num gold">2</div>
-                        <div class="stat-label">prémium referencia</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num gold">AI</div>
-                        <div class="stat-label">alapú fejlesztés</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num gold">100%</div>
-                        <div class="stat-label">személyes munka</div>
+            <div class="about-card-wrap reveal-up">
+                <div class="about-card">
+                    <div class="about-glow"></div>
+                    <div class="avatar">TO</div>
+                    <div class="about-name">Török Orion</div>
+                    <div class="about-role gold">Founder · Orion Studio</div>
+                    <div class="about-location" data-hu="Budapest, Magyarország" data-en="Budapest, Hungary">Budapest, Magyarország</div>
+                    <div class="about-tags">
+                        <span data-hu="Webfejlesztés" data-en="Web Development">Webfejlesztés</span>
+                        <span data-hu="AI automatizálás" data-en="AI Automation">AI automatizálás</span>
+                        <span>Claude AI</span>
                     </div>
                 </div>
             </div>
-            <div class="about-card reveal">
-                <div class="about-card-inner">
-                    <div class="avatar">TO</div>
-                    <div class="about-card-name">Török Orion</div>
-                    <div class="about-card-role gold">Founder · Orion Studio</div>
-                    <div class="about-card-meta">Budapest, Magyarország</div>
+            <div class="about-text reveal-up">
+                <p class="eyebrow"><span class="gold">04</span> · <span data-hu="Rólam" data-en="About">Rólam</span></p>
+                <h2>Török Orion</h2>
+                <p class="lead" data-hu="Budapesti webfejlesztő és AI-tanácsadó. Az Orion Studio mögött egy elv áll: minden ügyfél kapjon olyan munkát, mintha a saját cégemnek készülne." data-en="Budapest-based web developer and AI consultant. One principle behind Orion Studio: every client gets work as if it were being built for my own company.">Budapesti webfejlesztő és AI-tanácsadó. Az Orion Studio mögött egy elv áll: minden ügyfél kapjon olyan munkát, mintha a saját cégemnek készülne.</p>
+                <p data-hu="Weboldalakat építek és folyamatokat automatizálok magyar vállalkozásoknak. Hiszek a tisztaságban — a designban, a kódban és a kommunikációban egyaránt." data-en="I build websites and automate processes for Hungarian businesses. I believe in clarity — in design, in code, and in communication.">Weboldalakat építek és folyamatokat automatizálok magyar vállalkozásoknak. Hiszek a tisztaságban — a designban, a kódban és a kommunikációban egyaránt.</p>
+                <p data-hu="Gyors szállítás, személyes kapcsolat, kiszámítható eredmény. Nem ügynökség — egy személy, aki a te projektedre fókuszál." data-en="Fast delivery, personal relationship, predictable results. Not an agency — one person focused on your project.">Gyors szállítás, személyes kapcsolat, kiszámítható eredmény. Nem ügynökség — egy személy, aki a te projektedre fókuszál.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <span class="gold">◆</span>
+                        <div>
+                            <strong data-hu="Gyors szállítás" data-en="Fast delivery">Gyors szállítás</strong>
+                            <span data-hu="5–10 nap egy átlagos weboldalnál" data-en="5–10 days for a typical website">5–10 nap egy átlagos weboldalnál</span>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <span class="gold">◆</span>
+                        <div>
+                            <strong data-hu="Személyes kapcsolat" data-en="Personal relationship">Személyes kapcsolat</strong>
+                            <span data-hu="Közvetlenül velem dolgozol, nem egy csapattal" data-en="You work directly with me, not a team">Közvetlenül velem dolgozol, nem egy csapattal</span>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <span class="gold">◆</span>
+                        <div>
+                            <strong data-hu="AI-alapú fejlesztés" data-en="AI-powered development">AI-alapú fejlesztés</strong>
+                            <span data-hu="Gyorsabb, modernebb, hatékonyabb eredmény" data-en="Faster, more modern, more efficient results">Gyorsabb, modernebb, hatékonyabb eredmény</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Contact -->
     <section id="kapcsolat" class="section contact">
         <div class="container contact-grid">
-            <div class="contact-text reveal">
-                <p class="eyebrow"><span class="gold">04</span> · Kapcsolat</p>
-                <h2>Beszéljünk a projektedről</h2>
-                <p class="lead">Akár új weboldal, akár egy automatizációs ötlet — írj néhány sort, és 24 órán belül válaszolok.</p>
-                <div class="contact-info">
+            <div class="contact-text reveal-up">
+                <p class="eyebrow"><span class="gold">05</span> · <span data-hu="Kapcsolat" data-en="Contact">Kapcsolat</span></p>
+                <h2 data-hu="Beszéljünk a projektedről" data-en="Let's talk about your project">Beszéljünk a<br>projektedről</h2>
+                <p class="lead" data-hu="Akár új weboldal, akár automatizációs ötlet — írj néhány sort, és 24 órán belül válaszolok." data-en="Whether it's a new website or an automation idea — drop me a line and I'll reply within 24 hours.">Akár új weboldal, akár automatizációs ötlet — írj néhány sort, és 24 órán belül válaszolok.</p>
+                <div class="contact-links">
                     <a href="mailto:orion@orionstudio.hu" class="contact-link">
                         <span class="gold">✉</span> orion@orionstudio.hu
                     </a>
                     <div class="contact-link">
-                        <span class="gold">⌖</span> Budapest, Magyarország
+                        <span class="gold">⌖</span> <span data-hu="Budapest, Magyarország" data-en="Budapest, Hungary">Budapest, Magyarország</span>
                     </div>
                 </div>
+                <div class="contact-promises">
+                    <div><span class="gold">✓</span> <span data-hu="Ingyenes első konzultáció" data-en="Free initial consultation">Ingyenes első konzultáció</span></div>
+                    <div><span class="gold">✓</span> <span data-hu="24 órán belüli válasz" data-en="Reply within 24 hours">24 órán belüli válasz</span></div>
+                    <div><span class="gold">✓</span> <span data-hu="Kötelezettségmentes ajánlat" data-en="No-obligation quote">Kötelezettségmentes ajánlat</span></div>
+                </div>
             </div>
-            <form class="contact-form reveal" id="contactForm" novalidate>
+            <form class="contact-form reveal-up" id="contactForm" novalidate>
                 <div class="field">
-                    <label for="name">Név</label>
-                    <input type="text" id="name" name="name" required autocomplete="name">
+                    <label for="name" data-hu="Név" data-en="Name">Név</label>
+                    <input type="text" id="name" name="name" placeholder="Kovács János" required autocomplete="name">
                 </div>
                 <div class="field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required autocomplete="email">
+                    <label for="email" data-hu="Email" data-en="Email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="janos@cegem.hu" required autocomplete="email">
                 </div>
                 <div class="field">
-                    <label for="subject">Tárgy</label>
-                    <input type="text" id="subject" name="subject" required>
+                    <label for="subject" data-hu="Miben segíthetek?" data-en="How can I help?">Miben segíthetek?</label>
+                    <select id="subject" name="subject" required>
+                        <option value="" disabled selected data-hu="Válassz egy témát…" data-en="Choose a topic…">Válassz egy témát…</option>
+                        <option value="Weboldal készítés" data-hu="Weboldal készítés" data-en="Web development">Weboldal készítés</option>
+                        <option value="AI automatizálás" data-hu="AI automatizálás" data-en="AI automation">AI automatizálás</option>
+                        <option value="Logo és arculat" data-hu="Logo és arculat" data-en="Logo and branding">Logo és arculat</option>
+                        <option value="Google Business & SEO" data-hu="Google Business & SEO" data-en="Google Business & SEO">Google Business & SEO</option>
+                        <option value="Prémium csomag" data-hu="Prémium csomag" data-en="Premium package">Prémium csomag</option>
+                        <option value="Egyéb" data-hu="Egyéb" data-en="Other">Egyéb</option>
+                    </select>
                 </div>
                 <div class="field">
-                    <label for="message">Üzenet</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <label for="message" data-hu="Üzenet" data-en="Message">Üzenet</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Mondd el röviden miről szól a projekted…" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Üzenet küldése</button>
+                <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                    <span data-hu="Üzenet küldése" data-en="Send message">Üzenet küldése</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
                 <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
             </form>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container footer-inner">
             <div class="footer-brand">
-                <span class="logo-mark">◆</span>
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                    <polygon points="10,2 18,18 2,18" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+                    <circle cx="10" cy="10" r="2.5" fill="#c9a84c"/>
+                </svg>
                 <span>Orion <span class="gold">Studio</span></span>
             </div>
-            <p class="footer-text">© <span id="year"></span> Orion Studio — Készítette Török Orion, Budapest.</p>
+            <p class="footer-copy">© <span id="year"></span> Orion Studio · Török Orion · Budapest</p>
+            <a href="mailto:orion@orionstudio.hu" class="footer-email gold">orion@orionstudio.hu</a>
         </div>
     </footer>
 
